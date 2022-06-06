@@ -1,0 +1,30 @@
+{
+  "name": "api-clickstorm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mazasergaca/api-clickstorm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mazasergaca/api-clickstorm/issues"
+  },
+  "homepage": "https://github.com/mazasergaca/api-clickstorm#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.16"
+  },
+  "engines": {
+    "node": "14.18.0"
+  }
+}
