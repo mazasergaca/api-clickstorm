@@ -1,20 +1,23 @@
 const express = require("express");
 const {
+  registrationController,
+  loginController,
   getAllUsers,
   getUserById,
-  createUser,
   updateUser,
   deleteUser,
 } = require("../controllers/api-users-controllers");
 
 const router = express.Router();
 
+//registration new user
+router.post("/registration", registrationController);
+// login user
+router.post("/login", loginController);
 //get all users
 router.get("/", getAllUsers);
 // get user by id
 router.get("/:id", getUserById);
-// add new user
-router.post("/", createUser);
 // update user
 router.put("/:id", updateUser);
 // delete user

@@ -1,4 +1,22 @@
+const { registration, login } = require("../services/api-users-service");
+
 const User = require("../models/user-model");
+
+const registrationController = async (req, res) => {
+  const { username, password } = req.body;
+
+  await registration(username, password);
+
+  return res.status(200).json({ message: "success" });
+};
+
+const loginController = async (req, res) => {
+  const { username, password } = req.body;
+
+  const token = await login(username, password);
+
+  return res.status(200).json({ message: "success", token });
+};
 
 const getAllUsers = async (req, res) => {
   const users = await User.find({});
@@ -35,6 +53,8 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
+  registrationController,
+  loginController,
   getAllUsers,
   getUserById,
   createUser,
