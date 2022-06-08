@@ -2,25 +2,22 @@ const express = require("express");
 const {
   registrationController,
   loginController,
-  getAllUsers,
-  getUserById,
-  updateUser,
-  deleteUser,
+  getCurrentUserInfoController,
+  updateUserController,
 } = require("../controllers/api-users-controllers");
+const { userMiddlewar } = require("../middlewares/user-middlewar");
 
 const router = express.Router();
-
-//registration new user
+// registration new user
 router.post("/registration", registrationController);
 // login user
 router.post("/login", loginController);
-//get all users
-router.get("/", getAllUsers);
-// get user by id
-router.get("/:id", getUserById);
+
+router.use(userMiddlewar);
+
+// get user
+router.get("/current", getCurrentUserInfoController);
 // update user
-router.put("/:id", updateUser);
-// delete user
-router.delete("/:id", deleteUser);
+router.put("/update", updateUserController);
 
 module.exports = router;

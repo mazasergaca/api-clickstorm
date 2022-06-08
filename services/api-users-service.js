@@ -23,13 +23,20 @@ const login = async (username, password) => {
   return token;
 };
 
-const getAllUsers = async (req, res) => {
-  const users = await User.find({});
+const getCurrentUserInfo = async (_id) => {
+  const user = await User.findOne({ _id });
+  return user;
+};
 
-  return res.status(200).json(users);
+const updateUser = async (_id, body) => {
+  const user = await User.findByIdAndUpdate(_id, { ...body }, { new: true });
+
+  return user;
 };
 
 module.exports = {
   registration,
   login,
+  getCurrentUserInfo,
+  updateUser,
 };

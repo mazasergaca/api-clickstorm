@@ -1,4 +1,9 @@
-const { registration, login } = require("../services/api-users-service");
+const {
+  registration,
+  login,
+  getCurrentUserInfo,
+  updateUser,
+} = require("../services/api-users-service");
 
 const User = require("../models/user-model");
 
@@ -18,36 +23,17 @@ const loginController = async (req, res) => {
   return res.status(200).json({ message: "success", token });
 };
 
-const getAllUsers = async (req, res) => {
-  const users = await User.find({});
+const getCurrentUserInfoController = async (req, res) => {
+  const { _id } = req.user;
+  const user = await getCurrentUserInfo(_id);
 
-  return res.status(200).json(users);
+  res.status(200).json(user);
 };
 
-const getUserById = async (req, res) => {
-  const { id } = req.params;
-  const user = await User.findById(id);
+const updateUserController = async (req, res) => {
+  const { _id } = req.user;
 
-  return res.status(200).json(user);
-};
-
-const createUser = async (req, res) => {
-  const user = await User.create(req.body);
-
-  return res.status(200).json(user);
-};
-
-const updateUser = async (req, res) => {
-  const { id } = req.params;
-
-  const user = await User.findByIdAndUpdate(id, { ...req.body }, { new: true });
-
-  return res.status(200).json(user);
-};
-
-const deleteUser = async (req, res) => {
-  const { id } = req.params;
-  const user = await User.findByIdAndDelete(id);
+  const user = await updateUser(_id, req.body);
 
   return res.status(200).json(user);
 };
@@ -55,9 +41,6 @@ const deleteUser = async (req, res) => {
 module.exports = {
   registrationController,
   loginController,
-  getAllUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser,
+  getCurrentUserInfoController,
+  updateUserController,
 };
