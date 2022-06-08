@@ -21,13 +21,14 @@ app.listen(process.env.PORT, (err) => {
 app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms")
 );
-app.use(cors());
+// app.use(cors());
 // Add headers
 app.use(function (req, res, next) {
-  // Website you wish to allow to connect
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
-  // Pass to next layer of middleware
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
 app.use(express.json());
