@@ -5,8 +5,6 @@ const {
   updateUser,
 } = require("../services/api-users-service");
 
-const User = require("../models/user-model");
-
 const registrationController = async (req, res) => {
   const { username, password } = req.body;
 
