@@ -34,7 +34,7 @@ const userSchema = new Schema({
       default: 0,
     },
   },
-  type: {
+  achievements: {
     totalGames: {
       name: {
         type: String,
@@ -44,106 +44,18 @@ const userSchema = new Schema({
         type: Number,
         default: 0,
       },
-      levels: [
-        {
-          value: {
-            type: Number,
-            default: 1,
-          },
-          points: {
-            type: Number,
-            default: 5,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 10,
-          },
-          points: {
-            type: Number,
-            default: 15,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 25,
-          },
-          points: {
-            type: Number,
-            default: 20,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 50,
-          },
-          points: {
-            type: Number,
-            default: 25,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 100,
-          },
-          points: {
-            type: Number,
-            default: 50,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 250,
-          },
-          points: {
-            type: Number,
-            default: 100,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 1000,
-          },
-          points: {
-            type: Number,
-            default: 250,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-      ],
+      levels: {
+        type: Array,
+        default: [
+          { value: 1, points: 5, reseived: false },
+          { value: 10, points: 15, reseived: false },
+          { value: 25, points: 20, reseived: false },
+          { value: 50, points: 25, reseived: false },
+          { value: 100, points: 50, reseived: false },
+          { value: 250, points: 100, reseived: false },
+          { value: 1000, points: 250, reseived: false },
+        ],
+      },
     },
     totalCoins: {
       name: {
@@ -154,216 +66,40 @@ const userSchema = new Schema({
         type: Number,
         default: 0,
       },
-      levels: [
-        {
-          value: {
-            type: Number,
-            default: 10,
-          },
-          points: {
-            type: Number,
-            default: 5,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 100,
-          },
-          points: {
-            type: Number,
-            default: 15,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 500,
-          },
-          points: {
-            type: Number,
-            default: 20,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 1000,
-          },
-          points: {
-            type: Number,
-            default: 25,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 2500,
-          },
-          points: {
-            type: Number,
-            default: 50,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 5000,
-          },
-          points: {
-            type: Number,
-            default: 100,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 10000,
-          },
-          points: {
-            type: Number,
-            default: 250,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-      ],
+      levels: {
+        type: Array,
+        default: [
+          { value: 10, points: 5, reseived: false },
+          { value: 100, points: 15, reseived: false },
+          { value: 500, points: 20, reseived: false },
+          { value: 1000, points: 25, reseived: false },
+          { value: 2500, points: 50, reseived: false },
+          { value: 5000, points: 100, reseived: false },
+          { value: 10000, points: 250, reseived: false },
+        ],
+      },
     },
-    record: {
+    recordScore: {
       name: {
         type: String,
-        default: "Points record",
+        default: "Record",
       },
       value: {
         type: Number,
         default: 0,
       },
-      levels: [
-        {
-          value: {
-            type: Number,
-            default: 5,
-          },
-          points: {
-            type: Number,
-            default: 5,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 15,
-          },
-          points: {
-            type: Number,
-            default: 15,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 25,
-          },
-          points: {
-            type: Number,
-            default: 20,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 40,
-          },
-          points: {
-            type: Number,
-            default: 25,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 70,
-          },
-          points: {
-            type: Number,
-            default: 50,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 100,
-          },
-          points: {
-            type: Number,
-            default: 100,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-        {
-          value: {
-            type: Number,
-            default: 250,
-          },
-          points: {
-            type: Number,
-            default: 250,
-          },
-          reseived: {
-            type: Boolean,
-            default: false,
-          },
-        },
-      ],
+      levels: {
+        type: Array,
+        default: [
+          { value: 5, points: 5, reseived: false },
+          { value: 15, points: 15, reseived: false },
+          { value: 25, points: 20, reseived: false },
+          { value: 40, points: 25, reseived: false },
+          { value: 70, points: 50, reseived: false },
+          { value: 100, points: 100, reseived: false },
+          { value: 250, points: 250, reseived: false },
+        ],
+      },
     },
   },
 });
