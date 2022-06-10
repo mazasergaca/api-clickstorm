@@ -9,7 +9,7 @@ const registration = async (username, password) => {
 };
 
 const login = async (username, password) => {
-  const user = await User.findOne({ username });
+  const user = await User.findOne({ username, confirmed: true });
 
   if (!user) {
     throw new NotAuthorizedError(`No user with username "${username}" found`);
@@ -24,7 +24,7 @@ const login = async (username, password) => {
 };
 
 const getCurrentUserInfo = async (_id) => {
-  const user = await User.findOne({ _id });
+  const user = await User.findOne({ _id }, { __v: 0, password: 0 });
   return user;
 };
 

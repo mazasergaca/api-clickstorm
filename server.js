@@ -4,6 +4,7 @@ require("dotenv").config();
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const usersRoutes = require("./routes/api-users-router");
+const { errorHandler } = require("./helpers/api-helpers");
 
 const app = express();
 
@@ -22,17 +23,10 @@ app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms")
 );
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 
 app.use("/api/users/", usersRoutes);
 
-app.use((err, _, res) => {
-  res.status(500).json({ message: err.message });
-});
+app.use(errorHandler);

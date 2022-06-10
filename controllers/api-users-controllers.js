@@ -16,13 +16,9 @@ const registrationController = async (req, res) => {
 const loginController = async (req, res) => {
   const { username, password } = req.body;
 
-  try {
-    const token = await login(username, password);
+  const token = await login(username, password);
 
-    return res.status(200).json({ message: "success", token });
-  } catch (err) {
-    return res({ message: err });
-  }
+  return res.status(200).json({ message: "success", token });
 };
 
 const getCurrentUserInfoController = async (req, res) => {
